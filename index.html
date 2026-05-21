@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dave Childers</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f0;
+      --ink: #1a1a18;
+      --muted: #6b6b62;
+      --accent: #2a5c8f;
+      --accent-light: #e8f0f8;
+      --card-bg: #ffffff;
+      --border: #e0ddd6;
+      --tag-bg: #eef4fb;
+      --tag-ink: #2a5c8f;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── Layout ── */
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 80px 32px 100px;
+    }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 48px;
+      margin-bottom: 64px;
+    }
+
+    .name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .bio {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    .links {
+      margin-top: 24px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+
+    .links a:hover { opacity: 0.7; }
+
+    .links a svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+    }
+
+    /* ── Section heading ── */
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    /* ── Project cards ── */
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px 36px;
+      transition: box-shadow 0.2s, border-color 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      border-color: #c8c4bb;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+
+    .card-arrow {
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 3px;
+      transition: transform 0.2s;
+    }
+
+    .card:hover .card-arrow { transform: translate(3px, -3px); }
+
+    .card-desc {
+      font-size: 0.93rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      background: var(--tag-bg);
+      color: var(--tag-ink);
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 80px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ── Fade-in ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header { animation: fadeUp 0.5s ease both; }
+    .section-label { animation: fadeUp 0.5s 0.15s ease both; }
+    .card:nth-child(1) { animation: fadeUp 0.5s 0.2s ease both; }
+    .card:nth-child(2) { animation: fadeUp 0.5s 0.3s ease both; }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header>
+      <h1 class="name">Dave Childers</h1>
+      <p class="bio">
+        Research-oriented data scientist with graduate statistical training and
+        experience in healthcare analytics and causal inference. Experienced in
+        designing and conducting analyses to evaluate interventions using complex
+        real-world data. Proficient in R, SQL, Python, Git, and reproducible
+        analytical workflows.
+      </p>
+      <nav class="links">
+        <a href="https://github.com/davechilders" target="_blank">
+          <!-- GitHub icon -->
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577
+              0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757
+              -1.333-1.757-1.09-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07
+              1.835 2.807 1.305 3.492.998.108-.776.418-1.305.762-1.605-2.665-.3-5.466-1.332
+              -5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0
+              1.005-.322 3.3 1.23A11.52 11.52 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404
+              2.29-1.552 3.297-1.23 3.297-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23
+              1.91 1.23 3.22 0 4.61-2.807 5.625-5.48 5.92.43.372.823 1.102.823 2.222
+              0 1.606-.015 2.898-.015 3.293 0 .322.216.694.825.576C20.565 21.797 24
+              17.3 24 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          davechilders
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <p class="section-label">Projects</p>
+      <div class="projects">
+
+        <a class="card" href="https://davechilders.github.io/post-discharge-intervention-analysis/report.html" target="_blank">
+          <div class="card-header">
+            <h2 class="card-title">Post-Discharge Care Coordination &amp; Hospital Readmissions</h2>
+            <svg class="card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </div>
+          <p class="card-desc">
+            Simulated analysis evaluating whether post-discharge care coordination reduces
+            30-day hospital readmission rates in a value-based care setting. Uses synthetic
+            patient- and practice-level data with a staggered adoption design and a
+            generalized linear mixed model to estimate the effect of care management programs.
+          </p>
+          <div class="tags">
+            <span class="tag">Causal Inference</span>
+            <span class="tag">Diff-in-Differences</span>
+            <span class="tag">GLMM</span>
+            <span class="tag">Population Health</span>
+            <span class="tag">R</span>
+          </div>
+        </a>
+
+        <a class="card" href="https://davechilders.github.io/synthetic-patients/" target="_blank">
+          <div class="card-header">
+            <h2 class="card-title">Lung Cancer Survival from Synthetic EHR Data</h2>
+            <svg class="card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </div>
+          <p class="card-desc">
+            End-to-end workflow transforming synthetic EHR records (Synthea) into an
+            analysis-ready dataset, then applying survival analysis to estimate time from
+            lung cancer diagnosis to death. Covers data ingestion, parquet-based storage,
+            and patient-level time-to-event modeling.
+          </p>
+          <div class="tags">
+            <span class="tag">Survival Analysis</span>
+            <span class="tag">EHR Data</span>
+            <span class="tag">Synthea</span>
+            <span class="tag">Parquet</span>
+            <span class="tag">R</span>
+          </div>
+        </a>
+
+      </div>
+    </main>
+
+    <footer>
+      <p>Built with HTML &amp; CSS &middot; Hosted on GitHub Pages</p>
+    </footer>
+
+  </div>
+</body>
+</html>
