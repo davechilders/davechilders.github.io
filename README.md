@@ -1,5 +1,2 @@
 # davechilders.github.io
-
-## Section 1
-
-This is a test edit
+Personal landing page hosted via GitHub Pages. Live at https://davechilders.github.io
